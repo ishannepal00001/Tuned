@@ -1,0 +1,47 @@
+TunedApp {
+    background: #0A1420;
+    color: #7DD8F0;
+}
+
+$primary: #7DD8F0;
+$accent: #5BC8E0;
+$surface: #0D1B2A;
+$terminal-green: #3ECC5F;
+
+Header {
+    background: #0A1420;
+    color: #7DD8F0;
+    border-bottom: solid #7DD8F0;
+}
+
+Footer {
+    background: #0A1420;
+    color: #7DD8F0;
+    border-top: solid #7DD8F0;
+}
+
+Button {
+    background: #0D1B2A;
+    color: #7DD8F0;
+    border: solid #7DD8F0;
+}
+
+Button:hover {
+    background: #5BC8E0;
+    color: #0A1420;
+}
+
+Button.-primary {
+    background: #5BC8E0;
+    color: #0A1420;
+    border: solid #5BC8E0;
+}
+
+Button.-primary:hover {
+    background: #7DD8F0;
+    color: #0A1420;
+}
+
+Static {
+    color: #7DD8F0;
+}

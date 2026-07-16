@@ -1,0 +1,26 @@
+URLBar {
+    width: 80;
+    height: 3;
+    margin: 1 0;
+    background: #0D1B2A;
+    border: tall #7DD8F0;
+    padding: 0 1;
+    color: #3ECC5F;
+}
+
+URLBar:focus {
+    border: tall #5BC8E0;
+    color: #3ECC5F;
+}
+
+URLBar:focus > Input {
+    color: #3ECC5F;
+}
+
+Input {
+    color: #3ECC5F;
+}
+
+Input:focus {
+    color: #3ECC5F;
+}

@@ -1,0 +1,7 @@
+AsciiTitle {
+    width: auto;
+    height: auto;
+    content-align: center middle;
+    color: #7DD8F0;
+    margin: 1 0;
+}
