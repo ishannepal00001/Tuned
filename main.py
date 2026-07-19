@@ -4,25 +4,36 @@ import time
 
 from utils import clear_screen
 
-URL_OPTIONS = ["Convert Playlist URL", "Convert Video URL", "Back"]
+URL_OPTIONS = {
+    "convert_video_url_to_mp3": "Convert Video URL",
+    "convert_playlist_url": "Convert Playlist URL",
+    "Quit": "Quit",
+}
 MENU_OPTIONS = ["Convert URL to .MP3", "Search", "Quit"]
 
 
-def pretty_print_options(options: list) -> dict:
-    options_dict: Dict[int, str] = dict()
-    for idx, option in enumerate(options):
-        print(f"{idx + 1}: {option}")
-        options_dict[idx + 1] = option
+def pretty_print_options(options: Dict[str, str] | list) -> dict:
+    options_dict = (
+        {
+            int(idx + 1): (function_key, display_value)
+            for idx, (function_key, display_value) in enumerate(options.items())
+        }
+        if isinstance(options, dict)
+        else {int(idx + 1): value for idx, value in enumerate(options)}
+    )
     return options_dict
 
 
-def read_input_safely(prompt: str):
+def read_input_safely(prompt: str, type_conv):
     try:
         inp = str(input(prompt))
-        return inp
-    except KeyboardInterrupt or EOFError:
+        return type_conv(inp)
+    except KeyboardInterrupt, EOFError:
         print("\r Exitting the program!....")
         clear_screen()
+        sys.exit()
+    except ValueError:
+        print("\n Unexpected Value Type")
         sys.exit()
 
 
@@ -31,7 +42,7 @@ def main():
 
     while True:
         choices = pretty_print_options(MENU_OPTIONS)
-        choice = int(read_input_safely("Choose menu option:"))
+        choice = read_input_safely("Choose menu option:", type_conv=int)
         if choice in choices.keys() and choice != max(choices.keys()):
             print(f"You chose {choices[choice]}")
         elif choice == max(choices.keys()):
@@ -42,7 +53,7 @@ def main():
             print("Invalid Option! Try Again")
         while True:
             url_choices = pretty_print_options(URL_OPTIONS)
-            url_choice = int(read_input_safely("Choose URL option:"))
+            url_choice = read_input_safely("Choose URL option:", type_conv=int)
             if url_choice in url_choices.keys() and choice != max(url_choices.keys()):
                 print(f"You chose {url_choices[choice]}")
             elif choice == max(choices.keys()):
