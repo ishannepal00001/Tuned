@@ -2,7 +2,7 @@ from typing import Dict
 import sys
 import time
 
-from utils import clear_screen
+from utils import clear_screen, read_input_safely
 
 URL_OPTIONS = {
     "convert_video_url_to_mp3": "Convert Video URL",
@@ -22,19 +22,6 @@ def pretty_print_options(options: Dict[str, str] | list) -> dict:
         else {int(idx + 1): value for idx, value in enumerate(options)}
     )
     return options_dict
-
-
-def read_input_safely(prompt: str, type_conv):
-    try:
-        inp = str(input(prompt))
-        return type_conv(inp)
-    except KeyboardInterrupt, EOFError:
-        print("\r Exitting the program!....")
-        clear_screen()
-        sys.exit()
-    except ValueError:
-        print("\n Unexpected Value Type")
-        sys.exit()
 
 
 def main():
