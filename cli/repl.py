@@ -1,5 +1,5 @@
-from utils import clear_screen, pretty_print_options, read_input_safely
-from config import settings
+from ..utils import clear_screen, pretty_print_options, read_input_safely
+from ..config import settings
 
 import sys
 
@@ -29,3 +29,7 @@ def run_repl():
                 break
             else:
                 print("Invalid Option")
+
+
+if __name__ == "__main__":
+    run_repl()
