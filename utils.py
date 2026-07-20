@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import time
+from typing import Dict
 
 
 def read_input_safely(prompt: str, type_conv):
@@ -19,3 +20,12 @@ def read_input_safely(prompt: str, type_conv):
 def clear_screen() -> None:
     time.sleep(0.8)
     subprocess.run(["clear"])
+
+
+def pretty_print_options(options: Dict[str, str] | list):
+    {
+        print(f"\n {idx}:{display_option}")
+        for idx, (display_option, menu_option) in enumerate(options.items(), start=1)
+    } if isinstance(options, dict) else {
+        print(f"\n {idx}: {option}") for idx, option in enumerate(options, start=1)
+    }
