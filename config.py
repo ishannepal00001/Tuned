@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 class Config:
     def __init__(self) -> None:
         self.MENU_OPTIONS = ["Convert URL to .MP3", "Search", "Quit"]
@@ -6,6 +9,7 @@ class Config:
             "convert_playlist_url": "Convert Playlist URL",
             "Quit": "Quit",
         }
+        self.OUTPUT_DIR = Path.home() / "Music"
 
 
 settings = Config()

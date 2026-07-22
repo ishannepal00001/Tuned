@@ -3,6 +3,8 @@ import sys
 import time
 from typing import Dict
 
+from cli.parser import build_parser
+
 
 def read_input_safely(prompt: str, type_conv):
     try:
@@ -31,6 +33,7 @@ def pretty_print_options(options: Dict[str, str] | list):
     }
 
 
-def get_argument_length() -> int:
-    length = len(sys.argv)
-    return length
+def args_parser(argv):
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    return args

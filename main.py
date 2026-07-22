@@ -1,12 +1,22 @@
+from cli.parser import dispatch_args
 from cli.repl import run_repl
-from utils import get_argument_length
+from config import Config
+from utils import args_parser
+import sys
+
+from cli.downloader import Downloader
+
+client = Downloader()
+settings = Config()
 
 
 def main():
-    args = get_argument_length()
-    if args == 1:
+    command_args = sys.argv[:1]
+    if command_args is None:
         run_repl()
-        return
+
+    args = args_parser(command_args)
+    dispatch_args(args, client)
 
     print("Hello from Tuned!")
 
