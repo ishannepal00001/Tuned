@@ -29,3 +29,8 @@ def pretty_print_options(options: Dict[str, str] | list):
     } if isinstance(options, dict) else {
         print(f"\n {idx}: {option}") for idx, option in enumerate(options, start=1)
     }
+
+
+def get_argument_length() -> int:
+    length = len(sys.argv)
+    return length
