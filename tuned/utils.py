@@ -3,7 +3,7 @@ import sys
 import time
 from typing import Dict
 
-from cli.parser import build_parser
+from tuned.cli.parser import build_parser
 
 
 def read_input_safely(prompt: str, type_conv):

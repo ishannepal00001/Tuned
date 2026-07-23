@@ -1,5 +1,5 @@
-from ..utils import clear_screen, pretty_print_options, read_input_safely
-from ..config import settings
+from tuned.utils import clear_screen, pretty_print_options, read_input_safely
+from tuned.config import settings
 
 import sys
 

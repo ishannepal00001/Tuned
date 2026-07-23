@@ -1,13 +1,11 @@
 from argparse import ArgumentParser, Namespace
-from main import settings
+from tuned.config import settings
 
 
 def build_parser():
 
     parser = ArgumentParser()
     subparsers = parser.add_subparsers(dest="commands")
-    parser.add_argument("-h", "--help", help="Shows all Argument for the CLI")
-
     """Download Command Subparser"""
     download_parser = subparsers.add_parser("download", help="Downloads a single Video")
     download_parser.add_argument("url", help="URL for the Video to be downloaded.")
@@ -52,8 +50,8 @@ def build_parser():
 
 
 def dispatch_args(args, client):
-    if args.command == "download":
+    if args.commands == "download":
         result = client.download_mp3_video(
-            url=args.url, output_dir=args.output, codec=args.codec
+            url=args.url, output_dir=args.output, codec=args.format
         )
         print(result)

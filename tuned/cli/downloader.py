@@ -1,5 +1,5 @@
-from typing import Any, Dict, cast
-from yt_dlp import _Params, YoutubeDL
+from typing import Any, Dict
+from yt_dlp import YoutubeDL
 
 
 class Downloader:
@@ -32,6 +32,9 @@ class Downloader:
             output_dir=output_dir, codec=codec, embed_thumbnail=embed_thumbnail
         )
         opts["noplaylist"] = True
-        with YoutubeDL(cast(_Params, opts)) as ydl:
-            info = ydl.extract_info(url, download=True)
+        try:
+            with YoutubeDL(opts) as ydl:
+                info = ydl.extract_info(url, download=True)
+        except Exception as e:
+            return None
         return info

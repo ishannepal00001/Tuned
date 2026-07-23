@@ -1,0 +1,2 @@
+[console_scripts]
+tuned = tuned.main:main
