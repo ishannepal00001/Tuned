@@ -1,6 +1,17 @@
 from argparse import ArgumentParser
 from tuned.config import settings
-from tuned.utils import do_update
+import subprocess
+import sys
+
+
+def do_update():
+    result = subprocess.run(
+        ["pipx", "upgrade", "tuned"], capture_output=True, text=True
+    )
+    print(result.stdout)
+    if result.returncode != 0:
+        print(result.stderr, file=sys.stderr)
+        sys.exit(result.returncode)
 
 
 def build_parser():
