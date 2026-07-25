@@ -37,3 +37,13 @@ def args_parser(argv):
     parser = build_parser()
     args = parser.parse_args(argv)
     return args
+
+
+def do_update():
+    result = subprocess.run(
+        ["pipx", "upgrade", "tuned"], capture_output=True, text=True
+    )
+    print(result.stdout)
+    if result.returncode != 0:
+        print(result.stderr, file=sys.stderr)
+        sys.exit(result.returncode)

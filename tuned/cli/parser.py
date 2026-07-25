@@ -1,11 +1,22 @@
-from argparse import ArgumentParser, Namespace
+from argparse import ArgumentParser
 from tuned.config import settings
+from tuned.utils import do_update
 
 
 def build_parser():
 
     parser = ArgumentParser()
     subparsers = parser.add_subparsers(dest="commands")
+    """System Command Subparser"""
+    system_subparser = subparsers.add_parser(
+        "update", help="Fetches latest patches or updates for tuned!"
+    )
+    system_subparser.add_argument(
+        "--v",
+        "--version",
+        help="Specific version to update or mount!",
+    )
+
     """Download Command Subparser"""
     download_parser = subparsers.add_parser("download", help="Downloads a single Video")
     download_parser.add_argument("url", help="URL for the Video to be downloaded.")
@@ -51,7 +62,8 @@ def build_parser():
 
 def dispatch_args(args, client):
     if args.commands == "download":
-        result = client.download_mp3_video(
+        client.download_mp3_video(
             url=args.url, output_dir=args.output, codec=args.format
         )
-        print(result)
+    if args.commands == "update":
+        do_update()
