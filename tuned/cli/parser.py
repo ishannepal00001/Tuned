@@ -73,8 +73,9 @@ def build_parser():
 
 def dispatch_args(args, client):
     if args.commands == "download":
-        client.download_mp3_video(
+        result = client.download_mp3_video(
             url=args.url, output_dir=args.output, codec=args.format
         )
+        print(result)
     if args.commands == "update":
         do_update()

@@ -37,4 +37,4 @@ class Downloader:
                 info = ydl.extract_info(url, download=True)
         except Exception as e:
             return None
-        return None
+        return info
