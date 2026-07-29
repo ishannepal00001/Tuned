@@ -77,5 +77,9 @@ def dispatch_args(args, client):
             url=args.url, output_dir=args.output, codec=args.format
         )
         print(result)
+    if args.commands == "playlist":
+        result = client.download_mp3_playlist(
+            url=args.url, output_dir=args.output, range=args.range, codec=args.format
+        )
     if args.commands == "update":
         do_update()
