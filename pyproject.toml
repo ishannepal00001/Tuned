@@ -5,6 +5,7 @@ description = "A minimal CLI music or video downloader powered by YT_DLP. Stream
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "koushin>=1.2.6",
     "yt-dlp",
 ]
 [project.scripts]

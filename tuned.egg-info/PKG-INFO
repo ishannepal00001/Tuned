@@ -1,7 +1,0 @@
-Metadata-Version: 2.4
-Name: tuned
-Version: 0.1.2
-Summary: A minimal CLI music or video downloader powered by YT_DLP. Stream anything, own Anything.
-Requires-Python: >=3.12
-Description-Content-Type: text/markdown
-Requires-Dist: yt-dlp
